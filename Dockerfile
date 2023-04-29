@@ -4,9 +4,9 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm ci
+RUN npm i
 
 COPY . .
 
 # Start the server
-CMD [ "node", "dist/main" ]
+CMD [ "node", "server.js" ]
