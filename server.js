@@ -13,7 +13,7 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/todoapiDB";
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true })
   .then(() => {
-    app.listen(PORT, console.log("Server stated on port 5000"));
+    app.listen(PORT, console.log(`Server stated on port ${PORT}`));
   })
   .catch((err) => {
     console.log(err);
