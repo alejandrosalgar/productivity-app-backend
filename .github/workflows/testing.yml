@@ -15,7 +15,9 @@ jobs:
         with:
           envkey_NODE_ENV: 'test'
           envkey_MONGODB_URI: 'mongodb://localhost:27017/productivity-app'
-          envkey_JWT_SECRET: 'jwt-secret'
+          envkey_TOKEN_KEY: 's3cret'
+          envkey_EMAIL: 'alejo@alejo.com'
+          envkey_PASSWORD: 's3cret'
           file_name: .env
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.8.0
