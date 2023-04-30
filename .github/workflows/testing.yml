@@ -1,0 +1,31 @@
+name: Testing
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run checkout@v3
+        uses: actions/checkout@v3
+      - name: Create .env.test
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_NODE_ENV: 'test'
+          envkey_DATABASE_URL: 'mongodb://localhost:27017/productivity-app-${NODE_ENV}'
+          envkey_JWT_SECRET: 'jwt-secret'
+          file_name: .env
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.8.0
+        with:
+          mongodb-version: '5.0'
+          mongodb-replica-set: rs0
+          mongodb-port: 27017
+      - name: Run Jest Tests
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm run test
