@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 /* Creating a new schema for the activity model. */
 const activitySchema = new Schema({
-  name: {
+  namesa: {
     type: String,
     required: true,
   },
